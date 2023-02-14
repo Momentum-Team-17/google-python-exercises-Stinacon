@@ -20,9 +20,23 @@
 # strings where the string length is 2 or more and the first
 # and last chars of the string are the same.
 # Note: python does not have a ++ operator, but += works.
+
+# example list = ("apple", "potato", "tomato")
 def match_ends(words):
-  # +++your code here+++
-  return
+  count = 0
+  for word in words:
+    if len(word) >= 2 and word[0] == word[-1]:
+      count += 1
+  #find the length of the strings in the list;
+
+  return count
+#count the number of strings that are >=2 in length AND s[0] = s[-1]
+#return that count
+
+
+  
+
+  
 
 
 # B. front_x
@@ -32,11 +46,19 @@ def match_ends(words):
 # ['xanadu', 'xyz', 'aardvark', 'apple', 'mix']
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
+
+
 def front_x(words):
-  # +++your code here+++
-  return
-
-
+    x_words = []
+    sorted_words = []
+    for word in words:
+        if word[0] == 'x':
+            x_words.append(word)
+            sorted_x_words = sorted(x_words, key=lambda word: word[1])
+        else:
+            sorted_words.append(word)
+    sorted_words.sort()
+    return sorted_x_words + sorted_words
 
 # C. sort_last
 # Given a list of non-empty tuples, return a list sorted in increasing
@@ -56,18 +78,18 @@ def test(got, expected):
     prefix = ' OK '
   else:
     prefix = '  X '
-  print '%s got: %s expected: %s' % (prefix, repr(got), repr(expected))
+  print('%s got: %s expected: %s' % (prefix, repr(got), repr(expected)))
 
 
 # Calls the above functions with interesting inputs.
 def main():
-  print 'match_ends'
+  print('match_ends')
   test(match_ends(['aba', 'xyz', 'aa', 'x', 'bbb']), 3)
   test(match_ends(['', 'x', 'xy', 'xyx', 'xx']), 2)
   test(match_ends(['aaa', 'be', 'abc', 'hello']), 1)
 
-  print
-  print 'front_x'
+  print()
+  print('front_x')
   test(front_x(['bbb', 'ccc', 'axx', 'xzz', 'xaa']),
        ['xaa', 'xzz', 'axx', 'bbb', 'ccc'])
   test(front_x(['ccc', 'bbb', 'aaa', 'xcc', 'xaa']),
@@ -76,8 +98,8 @@ def main():
        ['xanadu', 'xyz', 'aardvark', 'apple', 'mix'])
 
        
-  print
-  print 'sort_last'
+  print()
+  print('sort_last')
   test(sort_last([(1, 3), (3, 2), (2, 1)]),
        [(2, 1), (3, 2), (1, 3)])
   test(sort_last([(2, 3), (1, 2), (3, 1)]),
