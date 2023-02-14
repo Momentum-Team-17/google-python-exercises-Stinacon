@@ -63,8 +63,10 @@ def fix_start(s):
 #   'dog', 'dinner' -> 'dig donner'
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
-    # +++your code here+++
-    return
+    new_a = b[:2] + a[2:]
+    new_b = a[:2] + b[2:]
+    # combined_string = (new_b_swapped_first2 + " " + new_a_swapped_first2)
+    return new_a + " " + new_b
 
 
 # Provided simple test() function used in main() to print
